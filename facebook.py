@@ -37,7 +37,6 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainPageHandler),
             (r"/chat", MainHandler),
-            (r"/getbg", BgHandler),
             (r"/chatsocket", ChatSocketHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),

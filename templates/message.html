@@ -1,4 +1,5 @@
 <div class="message" id="m{{ message["id"] }}" data-messageid="{{ message["user_id"] }}" data-name="{{ message["name"] }}"> 
 	<div class="pic" ><img src="{{ message["avatar"] }}"></div> 
+	<div class="name">{{ message["name"] }}</div>
 	<div class="txt">{% module linkify(message["body"]) %} <span>{{ message["time"] }}</span></div>
 </div>
