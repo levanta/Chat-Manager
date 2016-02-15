@@ -111,76 +111,51 @@ var updater = {
 
         messageid == userid ? node.find('.pic').addClass('myphoto') : node.find('.pic').addClass('photo')
 
-        $("#inbox").append(node); 
-
-
-        node.slideDown(300);
-        $('html,body').height($('#body').height())
-            .animate({ scrollTop: $(document).height() }, 300);
+        $("#inbox").append(node);
+        node.show();
 
         if(messageid != userid)   
             sendNoficiation(username, node.find(".txt").text(), messageid, node.find('.pic img').attr('src'));
 
     }
 };
-$(function(){
-    $('.menu > span').click(function(){
-        var w_w = $(window).width()/2 - 200
-        $('.userInfo').animate({
-            left:w_w
-        }, 300)
-        $('.overlay').fadeIn(300);
-        $('.userInfo').animate({
-            left:w_w
-        }, 300)
-    })
-    $('.overlay').click(function(){
-        $(this).fadeOut('fast');
-        $('.userInfo').animate({
-            left:-310
-        }, 300)
 
+//navigation
+$(function(){
+    var i = 0;
+    $('.menu').click(function(){
+        var w_w = $(window).width();
+        $('.userInfo').width(w_w-80)
+        if(i==0){
+            $('.userInfo').animate({left: 0 }, { duration: 300, queue: false })
+            $('#body, header').animate({left: w_w-80 }, { duration: 300, queue: false })
+            i++
+        }else{
+            $('.userInfo').animate({left: '-100%'}, { duration: 300, queue: false })
+            $('#body, header').animate({left: 0 }, { duration: 300, queue: false })
+            i--
+        }
     })
 });
+
 $(function(){
-    $('#inbox').css({minHeight:$(document).height()-100})
     $('.message').each(function(){
         var messageid = $(this).attr('data-messageid'),
             userid = getCookie('usr_id');
         messageid == userid ? $(this).find('.pic').addClass('myphoto') : $(this).find('.pic').addClass('photo')
         $(this).show();
     })
-    $(window).resize(function(){
-        $('#inbox').css({minHeight:$(document).height()-100})
-        if(!$('.overlay').is(':hidden')) {
-            $('.userInfo').css({
-                left:$(window).width()/2-200
-            }, 300)
-        }
-
-    });
 })
+
+//resize window
 $(function(){
-    $('.getbg').click(function(){
-        if($('.bg').is(':hidden')) {
-            $.ajax({
-                url:'/getbg',
-                success:function(data){
-                    $('.bg').html(data);
-                    $('.bg').slideDown();
-                    $('.bg img').click(function(){
-                        var src = $(this).attr('src');
-                        $('#body').css({
-                            'background-image': 'url('+src+')'
-                        });
-                        setCookie('bg', src)
-                        
-                    })
-                }
-            })
-        }else{
-            $('.bg').slideUp();
-        }
+    $(window).resize(function(){
+        $('.userInfo').css({left: '-100%', width:0})
+        $('#body, header').css({left: 0 })
     })
 })
 
+// ready
+$(function(){
+    
+})

@@ -1,0 +1,16 @@
+<?xml version="1.0"?><svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>asdf</title>
+ <defs>
+  <linearGradient id="linearGradient601">
+   <stop id="stop602" offset="0" stop-color="#e6cd00"/>
+   <stop id="stop603" offset="1" stop-color="#ff9f2d"/>
+  </linearGradient>
+  <radialGradient cx="0.30469" cy="0.32812" fx="0.30469" fy="0.32812" gradientUnits="objectBoundingBox" id="radialGradient604" r="0.32961" spreadMethod="pad" xlink:href="#linearGradient601"/>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path transform="rotate(0.121249 275.871 274.212)" d="m219.313324,237.171005c1.874451,3.002655 48.501129,74.578171 113.116364,74.078934c64.615234,-0.499237 104.044983,-79.580002 104.044983,-79.580002" id="path622" stroke-width="3.75" stroke="black" fill-rule="evenodd" fill="none"/>
+  <ellipse fill="#000000" stroke-width="0" cx="288.000001" cy="191.500001" id="svg_1" rx="16.000001" ry="20.499999"/>
+  <ellipse id="svg_3" fill="#000000" stroke-width="0" cx="370.000001" cy="191.000001" rx="16.000001" ry="20.499999"/>
+ </g>
+</svg>
