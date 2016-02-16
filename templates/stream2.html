@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1"/>
     <title>Chat Demo</title>
     <link rel="stylesheet" href="{{ static_url("styles.css") }}">
+    <link href="{{ static_url("jquery.mCustomScrollbar.css") }}" rel="stylesheet">
 
 </head>
 <body>
@@ -13,13 +14,12 @@
     </header>
     <div class="userInfo">
         <div class="head">
-            <img src="{{ current_user["picture"]["data"]["url"] }}" alt="">
             {{ escape(current_user["name"]) }}
         </div>
         <div class="info">
             <a href="/auth/logout">{{ _("Sign out") }}</a> 
             <a href="/">{{ _("Refresh stream") }}</a>
-            <a href="#">Settings</a>
+            <a href="#"><span>Settings</span></a>
         </div>
     </div>
     <div id="body">
@@ -35,9 +35,12 @@
             <input type="hidden" name="next" value="{{ request.path }}">
             {% module xsrf_form_html() %}
             <span class="smile"></span>
+            <div class="smiles"></div>  
         </form>
     </div>
     <script src="{{ static_url("jquery.js") }}"></script>
+    <script src="{{ static_url("jquery.mCustomScrollbar.min.js") }}"></script>
+    <script src="{{ static_url("jquery.mousewheel.min.js") }}"></script>
     <script src="{{ static_url("functions.js") }}"></script>
 </body>
 </html>

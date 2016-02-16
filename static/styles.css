@@ -1,15 +1,15 @@
-html, body{height: 100%; padding: 0; margin: 0;  overflow: hidden;}
+html, body{height: 100%; padding: 0; margin: 0; overflow: hidden; }
 body {color: black; background: #fff; font-family: "Lucida Grande", sans-serif; font-size: 10pt; }
 
 #body {
-    position: absolute; left: 0; bottom: 50px;
-    padding: 8px 8px 30px;
-    width: 100%;
+    position: absolute; left: 0;
+    padding: 8px 0 8px 8px; overflow: auto;
+    width: 100%; top: 50px; bottom: 50px;
     box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;
 }
 
 header{
-    position: absolute; top: 0; left: 0; right:0; height: 38px; padding-top: 12px;
+    position: fixed; top: 0; left: 0; right:0; height: 38px; padding-top: 12px;
     background: #E7EDED; z-index: 1;
     box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;
 }
@@ -25,18 +25,18 @@ header{
 
 .userInfo{
     box-shadow: 0 0 4px #020718; 
-    color: #fff; bottom: 10px; border-radius: 0 0 0 6px;
+    color: rgba(231,237,237,.9); bottom: 10px; border-radius: 0 0 0 6px;
     position: fixed; z-index: 100; top: 0; left: -100%; bottom: 0;
-    background: #3B525E;
+    background: #3B525E; font-family: 'Trebuchet MS';
 }
 .userInfo .head{
-    padding: 20px 10px 10px; 
+    padding: 20px 10px 10px;  font-weight: bold; font-size: 15px;
 }
 .userInfo .head img{border-radius: 50%; height: 40px; width: 40px; display: block; margin-bottom: 10px;}
-.userInfo .info{padding: 5px 0; font-size: 10px}
-.userInfo .info a{color: #551; position:relative; text-decoration: none; border-top: 1px solid #999; display: block; padding: 8px 10px;}
-.userInfo .info a:hover{color: #333;}
-.userInfo .info a:first-child{border:none;}
+.userInfo .info{padding: 5px 0; font-size: 13px}
+.userInfo .info a{color: rgba(231,237,237,.6); position:relative; text-decoration: none; display: block; padding: 8px 10px;}
+.userInfo .info a:hover{color: #fff;}
+.userInfo .info a span{text-transform: uppercase; font-weight: bold;}
 
 .pic {margin-bottom: 12px; font-size: 0; float: left; margin-right: 8px;}
 .pic img{ border-radius: 3px;  height: 30px; width: 30px;}
@@ -46,8 +46,8 @@ header{
     border-radius: 3px; padding: 8px; font-size: 12px; max-width: 90%;
     float:left; word-wrap:break-word;
 }
-.myphoto ~ .txt{ background: rgba(245,246,246,.5); }
-.photo ~ .txt{ background: rgba(151,162,158,.1);}
+.myphoto ~ .txt{ background: rgba(245,246,246,.6); }
+.photo ~ .txt{ background: rgba(151,162,158,.2);}
 
 .message:after{content: ''; clear: both; display: block;}
 .txt span{float: right; line-height: 18px; width: 40px; font-size: 10px; color: #4D5C33; text-align: right;}
@@ -57,12 +57,20 @@ header{
 
 #input {
     box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;
-    padding: 8px; position: fixed; bottom: 0; left: 0; width: 100%; }
+    padding: 8px; position: fixed; bottom: 0; left: 0; width: 100%; 
+    background: #fff;
+}
 
 #input input[type="text"] {
     box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;
     width:100%; vertical-align: top; padding:10px; border: none; outline:none;
-    border:1px solid #4D5C33; border-radius: 3px;
+    border:2px solid rgba(77,92,51,.4); border-radius: 3px;
 }
-.smile{position: absolute; top: 13px; right: 15px; cursor: pointer;}
+.smile{position: absolute; top: 13px; right: 15px; cursor: pointer; display: none;}
 .smile:after{background: url(smile1.svg) 50% 50% no-repeat; width: 25px; height: 25px; display: inline-block; content: ''; background-size: 220% }
+.smiles{
+    position: absolute; bottom: 50px; right: 10px;
+    display: none; width: 202px; padding: 5px; font-size: 0; background: #fff; border-radius: 4px; box-shadow:0 0 3px 1px rgba(77,92,51,.4);}
+.smiles span{width: 50px; height: 50px; line-height: 50px; border-radius: 4px; display: inline-block; text-align: center; cursor: pointer;}
+.smiles span:active{background:  rgba(77,92,51,.1)}
+.smiles span img{vertical-align: middle;}

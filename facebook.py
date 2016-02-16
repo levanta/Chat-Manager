@@ -25,7 +25,7 @@ import urllib
 
 from tornado.options import define, options
 from chatsockethandler import ChatSocketHandler
-from getbg import BgHandler
+from smiles import SmilesHandler
 
 define("port", default=8888, help="run on the given port", type=int)
 define("facebook_api_key", "549740061875624", type=str)
@@ -38,6 +38,7 @@ class Application(tornado.web.Application):
             (r"/", MainPageHandler),
             (r"/chat", MainHandler),
             (r"/chatsocket", ChatSocketHandler),
+            (r"/getsmiles", SmilesHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
         ]

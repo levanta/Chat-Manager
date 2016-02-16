@@ -110,12 +110,21 @@ var updater = {
             username = node.attr('data-name');
 
         messageid == userid ? node.find('.pic').addClass('myphoto') : node.find('.pic').addClass('photo')
-
+        var txt, txt = node.find('.txt').text();
+        $('.smiles span').each(function(){
+            var code = $(this).attr('data-smile'),
+                ico = $(this).find('img').attr('src');
+            var re = new RegExp(code, 'g');
+            txt = txt.replace(re, '<img src='+ico+'>')
+        })
+        node.find(".txt").html(txt)
         $("#inbox").append(node);
         node.show();
-
+        $("#body").mCustomScrollbar("scrollTo","bottom")
         if(messageid != userid)   
             sendNoficiation(username, node.find(".txt").text(), messageid, node.find('.pic img').attr('src'));
+
+
 
     }
 };
@@ -124,15 +133,15 @@ var updater = {
 $(function(){
     var i = 0;
     $('.menu').click(function(){
-        var w_w = $(window).width();
-        $('.userInfo').width(w_w-80)
+        var w_w = $(window).width()>480 ? 300 : $(window).width()-60;
+        $('.userInfo').width(w_w)
         if(i==0){
             $('.userInfo').animate({left: 0 }, { duration: 300, queue: false })
-            $('#body, header').animate({left: w_w-80 }, { duration: 300, queue: false })
+            $('#body, header, #input').animate({left: w_w }, { duration: 300, queue: false });
             i++
         }else{
             $('.userInfo').animate({left: '-100%'}, { duration: 300, queue: false })
-            $('#body, header').animate({left: 0 }, { duration: 300, queue: false })
+            $('#body, header, #input').animate({left: 0 }, {duration: 300, queue: false});
             i--
         }
     })
@@ -147,15 +156,38 @@ $(function(){
     })
 })
 
+$(function(){
+    $.ajax({
+        url:'/getsmiles',
+        success:function(data){
+            $('.smiles').html(data);
+            $('.smile').show();
+        }
+     })
+    $('.smile').click(function(){
+        $('.smiles').toggle();
+    })
+    $('body').delegate('.smiles span', 'click', function(){
+        $('#message').val($('#message').val() + $(this).attr('data-smile')).focus();
+        $('.smiles').hide();
+
+    })
+})
+
 //resize window
 $(function(){
     $(window).resize(function(){
         $('.userInfo').css({left: '-100%', width:0})
-        $('#body, header').css({left: 0 })
+        $('#body, header, #input').css({left: 0 })
+        $("#body").mCustomScrollbar("scrollTo","bottom")
     })
 })
 
 // ready
 $(function(){
-    
+    $("#body, .userInfo").mCustomScrollbar({
+        scrollInertia:300,
+        autoDraggerLength:false
+    });
+    $("#body").mCustomScrollbar("scrollTo","bottom")
 })

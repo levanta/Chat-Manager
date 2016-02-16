@@ -1,0 +1,5 @@
+{% set n = 0 %}
+{% for i in smile %}
+	<span data-smile="{{ ar[n] }}"><img src="{{ static_url("smiles/" + i) }}" alt=""></span>
+	{% set n = n + 1 %}
+{% end %}
